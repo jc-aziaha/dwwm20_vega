@@ -5,6 +5,7 @@ use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
 use VegaCore\HttpKernel\KernelInterface;
 use Symfony\Component\ErrorHandler\Debug;
+use VegaCore\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -103,9 +104,7 @@ abstract class Kernel implements KernelInterface
     {
         $this->boot();
 
-        
-
-        // return new Response("Hello World");
+        $this->container->get(HttpKernelInterface::class)->handle($request);
     }
 
 
