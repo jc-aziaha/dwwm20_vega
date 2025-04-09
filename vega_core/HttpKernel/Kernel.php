@@ -104,7 +104,7 @@ abstract class Kernel implements KernelInterface
     {
         $this->boot();
 
-        $this->container->get(HttpKernelInterface::class)->handle($request);
+        return $this->container->get(HttpKernelInterface::class)->handle($request);
     }
 
 
