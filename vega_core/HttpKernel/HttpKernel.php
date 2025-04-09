@@ -1,6 +1,7 @@
 <?php
 namespace VegaCore\HttpKernel;
 
+use App\Controller\WelcomeController;
 use Psr\Container\ContainerInterface;
 use VegaCore\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,7 +73,15 @@ class HttpKernel implements HttpKernelInterface
         }
 
         // Dans le cas contraire,
+        $class  = $routerResponse['class'];
+        $method = $routerResponse['method'];
+        
+        if ( isset($routerResponse['params']) && !empty($routerResponse['params']) ) 
+        {
+            $params = $routerResponse['params'];
+            return $this->container->call([$class, $method], [...$params]);
+        }
 
-
+        return $this->container->call([$class, $method]);
     }
 }

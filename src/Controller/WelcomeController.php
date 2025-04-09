@@ -3,18 +3,34 @@ namespace App\Controller;
 
 use AttributesRouter\Attribute\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
 class WelcomeController
 {
+
+    private Environment $twig;
+
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     #[Route('/', name: 'app_index', methods: ['GET'])]
     public function index(): Response
     {
-        return new Response("Hello");
+        $content = $this->twig->render('index.html.twig');
+        return new Response($content);
     }
 
     #[Route('/test', name: 'app_test', methods: ['GET'])]
     public function test(): Response
     {
         return new Response("test");
+    }
+
+    #[Route('/article/{id<\d+>}', name: 'app_show', methods: ['GET'])]
+    public function show(int $id): Response
+    {
+        return new Response("article {$id}");
     }
 }

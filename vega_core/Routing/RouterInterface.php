@@ -12,7 +12,7 @@ interface RouterInterface
      *
      * @throws \ReflectionException when the controller does not exist
      */
-    public function addRoutes(array $controllers = []);
+    public function addRoutes(array $controllers);
 
     /**
      * Iterate over all the attributes of the controllers in order to find the first one corresponding to the request.
