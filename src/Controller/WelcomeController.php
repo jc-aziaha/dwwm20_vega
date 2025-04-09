@@ -3,23 +3,15 @@ namespace App\Controller;
 
 use AttributesRouter\Attribute\Route;
 use Symfony\Component\HttpFoundation\Response;
-use Twig\Environment;
+use VegaCore\AbstractController\AbstractController;
 
-class WelcomeController
+class WelcomeController extends AbstractController
 {
-
-    private Environment $twig;
-
-    public function __construct(Environment $twig)
-    {
-        $this->twig = $twig;
-    }
 
     #[Route('/', name: 'app_index', methods: ['GET'])]
     public function index(): Response
     {
-        $content = $this->twig->render('index.html.twig');
-        return new Response($content);
+        return $this->render('index.html.twig');
     }
 
     #[Route('/test', name: 'app_test', methods: ['GET'])]
