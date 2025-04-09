@@ -12,7 +12,7 @@ interface KernelInterface
      * Initialiser le noyau.
      *
      * @todo Ses rôles:
-     *      - Désactiver les messages d'erreurs
+     *      - Désactiver les messages d'erreurs en production
      *      - Activer le déboggeur
      *      - Charger le conteneur de dépendances
      * 

@@ -103,7 +103,9 @@ abstract class Kernel implements KernelInterface
     {
         $this->boot();
 
-        return new Response("Hello World");
+        
+
+        // return new Response("Hello World");
     }
 
 
@@ -114,7 +116,7 @@ abstract class Kernel implements KernelInterface
      */
     public function getEnvironment(): string
     {
-
+        return $this->environment;
     }
 
 
@@ -126,7 +128,7 @@ abstract class Kernel implements KernelInterface
      */
     public function isDebug(): bool
     {
-
+        return $this->debug;
     }
 
 
